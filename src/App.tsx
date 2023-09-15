@@ -1,27 +1,17 @@
-import { Layout } from "antd";
-import styles from "./app.module.less";
+import React from "react";
+import { useRoutes } from "react-router-dom";
+import rootRouter from "./routes";
 
-const { Header, Sider, Content } = Layout;
 const App = () => {
-  return (
-    <div>
-      <Layout>
-        <Header className={styles.header}>Hearder</Header>
-        <Layout hasSider>
-          <Sider className={styles.sider}>Sider</Sider>
-          <Content className={styles.content}>
-            <div className="w-full h-full pr-4 pb-4">
-              <div className="bg-silver w-full h-full p-4">
-                <div className="bg-white w-full h-full rounded-lg p-4">
-                  content
-                </div>
-              </div>
-            </div>
-          </Content>
-        </Layout>
-      </Layout>
-    </div>
-  );
+  const element = useRoutes(rootRouter as any);
+  console.log(element);
+  return <>{element}</>;
 };
+
+// const App = () => {
+//   return (
+//     <RouterProvider router={rootRouter}>
+//   )
+// }
 
 export default App;

@@ -20,11 +20,13 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"]
+      "@src/*": ["src/*"],
+      "@pages/*": ["src/pages/*"],
     }
   },
   "include": ["src"],
-  "exclude": ["node_modules", "dist", "build", "coverage", "scripts", "test", "tests", "e2e"],
+  "exclude": ["node_modules", "dist"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
