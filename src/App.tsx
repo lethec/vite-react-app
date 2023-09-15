@@ -4,14 +4,7 @@ import rootRouter from "./routes";
 
 const App = () => {
   const element = useRoutes(rootRouter as any);
-  console.log(element);
   return <>{element}</>;
 };
-
-// const App = () => {
-//   return (
-//     <RouterProvider router={rootRouter}>
-//   )
-// }
 
 export default App;
