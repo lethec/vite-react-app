@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { PageLoading } from "@ant-design/pro-components";
-import { Demo, Home, Layout, Test } from "./config";
+import { Demo, Home, Layout, SubDemo, Test } from "./config";
 
 const lazyLoad = (Component: any) => (
   <Suspense fallback={<PageLoading />}>
@@ -17,18 +17,23 @@ const rootRouter = [
     auth: true,
     children: [
       {
+        path: "/",
         index: true, // 是否将这个路由视为主页或者默认路由
         name: "首页",
         key: "/",
-        auth: true,
+        auth: true, // 是否需要身份验证或者登录才能访问
         element: lazyLoad(Home),
       },
       {
-        path: "demo",
+        path: "/demo",
         name: "Demo",
-        key: "/demo",
-        auth: true, // 是否需要身份验证或者登录才能访问
+        key: "demo",
         element: lazyLoad(Demo),
+        children: {
+          path: "/subDemo",
+          name: "subDemo",
+          element: lazyLoad(SubDemo),
+        },
       },
     ],
   },
