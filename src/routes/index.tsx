@@ -25,15 +25,22 @@ const rootRouter = [
         element: lazyLoad(Home),
       },
       {
-        path: "/demo",
         name: "Demo",
         key: "demo",
-        element: lazyLoad(Demo),
-      },
-      {
-        path: "/demo/subDemo",
-        name: "subDemo",
-        element: lazyLoad(SubDemo),
+        children: [
+          {
+            path: "/demo",
+            name: "Demo",
+            key: "demo",
+            element: lazyLoad(Demo),
+          },
+          {
+            path: "/demo/subDemo",
+            name: "子路由",
+            key: "subDemo",
+            element: lazyLoad(SubDemo),
+          },
+        ],
       },
     ],
   },
