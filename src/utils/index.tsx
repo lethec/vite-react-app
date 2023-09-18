@@ -1,38 +1,18 @@
-import React from "react";
-import routes from "@src/routes";
+import { useSearchParams } from "react-router-dom";
 
-const flattenRoutes = (arr: any[]): any =>
-  arr.reduce((prev, item) => {
-    if (Array.isArray(item.children)) {
-      prev.push(item);
-    }
-    return prev.concat(
-      Array.isArray(item.children) ? flattenRoutes(item.children) : item
-    );
-  }, []);
+const getSearchParam = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [searchParams] = useSearchParams();
 
-const getKeyName = (pathName = "/404") => {
-  const thePath = pathName.split("?")[0];
-  const curRoute = flattenRoutes(routes)
-    .filter((item: any) => !item.index)
-    .filter((item: any) => item.key?.indexOf(thePath) !== -1);
-  if (!curRoute[0]) {
-    return {
-      title: "Not Found",
-      tabKey: "/404",
-      element: <div>404</div>,
-    };
-  }
+  const paramsObject = Array.from(searchParams.entries()).reduce(
+    (accumulator: any, [key, value]) => {
+      accumulator[key] = value;
+      return accumulator;
+    },
+    {}
+  );
 
-  const { name, key, element, index, path, auth } = curRoute[0];
-  return {
-    index: index ?? false,
-    path,
-    auth,
-    title: name,
-    tabKey: key,
-    element,
-  };
+  return paramsObject;
 };
 
-export { getKeyName };
+export { getSearchParam };

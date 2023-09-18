@@ -11,22 +11,26 @@ const BeforeRoute: FC<IProps> = (props) => {
   const location = useLocation();
   const router = useRoutes(routeConfig);
 
-  const findRoute = useCallback((path: string, routes: any) => {
-    for (const value of routes) {
-      if (value?.path === path) {
-        return value;
+  const findRoute = useCallback((routes: any, path: string) => {
+    for (const route of routes) {
+      if (route.path === path) {
+        return route;
       }
-      if (value.children) {
-        return findRoute(path, value.children);
+
+      if (route.children) {
+        const childRoute: any = findRoute(route.children, path);
+        if (childRoute) {
+          return childRoute;
+        }
       }
     }
-    return null;
+
+    return null; // 如果未找到匹配的路由，返回 null 或其他默认值
   }, []);
 
   const judgeRouter = useCallback(() => {
     const { pathname } = location;
-    console.log(pathname, location);
-    const route = findRoute(pathname, routeConfig[0].children);
+    const route = findRoute(routeConfig, pathname);
     // 路由守卫判断
     if (!route) {
       navigate("/404");
