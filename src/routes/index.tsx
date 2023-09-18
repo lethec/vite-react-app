@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import React, { Suspense } from "react";
 import { PageLoading } from "@ant-design/pro-components";
 import { Demo, Home, Layout, SubDemo, Test } from "./config";
 
@@ -29,11 +29,11 @@ const rootRouter = [
         name: "Demo",
         key: "demo",
         element: lazyLoad(Demo),
-        children: {
-          path: "/subDemo",
-          name: "subDemo",
-          element: lazyLoad(SubDemo),
-        },
+      },
+      {
+        path: "/demo/subDemo",
+        name: "subDemo",
+        element: lazyLoad(SubDemo),
       },
     ],
   },

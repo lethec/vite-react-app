@@ -1,5 +1,7 @@
+import LOGO from "./src/assets/images/logo.jpg";
+
 export default {
   title: "ViteDemo",
-  logo: "./src/assets/images/logo.jpg",
+  logo: LOGO,
   name: "VITE管理系统",
 };

@@ -1,6 +1,7 @@
+import React from "react";
 import routes from "@src/routes";
 
-const flattenRoutes = (arr: any[]) =>
+const flattenRoutes = (arr: any[]): any =>
   arr.reduce((prev, item) => {
     if (Array.isArray(item.children)) {
       prev.push(item);

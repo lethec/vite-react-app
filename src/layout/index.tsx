@@ -2,6 +2,7 @@ import { Layout } from "antd";
 import styles from "./index.module.less";
 import ProContent from "./proContent";
 import ProHeader from "./proHeader";
+import ProSider from "./proSider";
 
 const { Header, Sider, Content } = Layout;
 const ProLayout = () => {
@@ -11,7 +12,9 @@ const ProLayout = () => {
         <ProHeader />
       </Header>
       <Layout hasSider>
-        <Sider className={styles.sider}>Sider</Sider>
+        <Sider className={styles.sider}>
+          <ProSider />
+        </Sider>
         <Content className={styles.content}>
           <div className="w-full h-full pr-4 pb-4">
             <div className="bg-silver w-full h-full p-4">
