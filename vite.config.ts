@@ -12,7 +12,4 @@ export default defineConfig({
       "@assets": path.resolve(__dirname, "./src/assets"),
     },
   },
-  optimizeDeps: {
-    include: ["esm-dep > cjs-dep"],
-  },
 });
