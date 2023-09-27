@@ -10,44 +10,25 @@ const lazyLoad = (Component: any) => (
 
 const rootRouter = [
   {
-    page: "/",
+    path: "/",
     name: "首页",
-    key: "/",
     element: lazyLoad(Layout),
-    auth: true,
     children: [
       {
         path: "/",
-        index: true, // 是否将这个路由视为主页或者默认路由
         name: "首页",
-        key: "/",
-        auth: true, // 是否需要身份验证或者登录才能访问
         element: lazyLoad(Home),
       },
       {
         name: "Demo",
-        key: "demo",
+        path: "demo",
+        element: lazyLoad(Demo),
         children: [
           {
-            path: "/demo",
+            path: "add",
             name: "Demo",
-            key: "demo",
-            element: lazyLoad(Demo),
-            children: [
-              {
-                path: "/demo/subDemo",
-                name: "子路由",
-                key: "subDemo",
-                element: lazyLoad(SubDemo),
-              },
-            ],
+            element: lazyLoad(SubDemo),
           },
-          // {
-          //   path: "/demo/subDemo",
-          //   name: "子路由",
-          //   key: "subDemo",
-          //   element: lazyLoad(SubDemo),
-          // },
         ],
       },
     ],

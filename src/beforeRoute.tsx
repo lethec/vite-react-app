@@ -29,13 +29,13 @@ const BeforeRoute: FC<IProps> = (props) => {
   }, []);
 
   const judgeRouter = useCallback(() => {
-    const { pathname } = location;
-    const route = findRoute(routeConfig, pathname);
-    // 路由守卫判断
-    if (!route) {
-      navigate("/404");
-      return;
-    }
+    // const { pathname } = location;
+    // const route = findRoute(routeConfig, pathname);
+    // // 路由守卫判断
+    // if (!route) {
+    //   navigate("/404");
+    //   return;
+    // }
   }, []);
 
   useEffect(() => {
